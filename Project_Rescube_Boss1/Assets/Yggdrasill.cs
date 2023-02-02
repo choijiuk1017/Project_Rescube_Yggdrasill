@@ -10,7 +10,6 @@ public class Yggdrasill : MonoBehaviour
     Animator anim;
 
 
-
     enum State
     {
         Idle,
@@ -37,15 +36,15 @@ public class Yggdrasill : MonoBehaviour
     {
         if(state == State.Idle)
         {
-
+            UpdateIdle();
         }
         else if(state == State.Attack)
         {
-
+            UpdateAttack();
         }
         else if(state==State.Death)
         {
-
+            UpdateDeath();
         }
     }
 
