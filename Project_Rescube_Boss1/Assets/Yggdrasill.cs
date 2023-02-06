@@ -9,6 +9,8 @@ public class Yggdrasill : MonoBehaviour
 
     Animator anim;
 
+    private bool isDelay;
+
 
     enum State
     {
@@ -50,12 +52,24 @@ public class Yggdrasill : MonoBehaviour
 
     private void UpdateIdle()
     {
-
+        if(player != null)
+        {
+            state = State.Attack;
+        }
+        else
+        {
+            state = State.Idle;
+        }
     }
 
     private void UpdateAttack()
     {
+        StartCoroutine(Think());
 
+        if(player == null)
+        {
+            state = State.Idle;
+        }
     }
 
     private void UpdateDeath()
@@ -72,27 +86,68 @@ public class Yggdrasill : MonoBehaviour
         switch (ranAction)
         {
             case 0:
+                if(isDelay == false)
+                {
+                    isDelay = true;
+                    StartCoroutine(Pattern1());
+                }
                 break;
+
+
             case 1:
-            case 2:
                 break;
+
+            case 2:
+                if (isDelay == false)
+                {
+                    isDelay = true;
+                    StartCoroutine(Pattern2());
+                }
+                break;
+
             case 3:
+                break;
+
             case 4:
+                if (isDelay == false)
+                {
+                    isDelay = true;
+                    StartCoroutine(Pattern3());
+                }
                 break;
         }
     }
 
-    IEnumerator pattern1()
+    IEnumerator Pattern1()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(6f);
+
+        Debug.Log("Pattern1");
+
+        isDelay = false;
+        StartCoroutine(Think());
     }
-    IEnumerator pattern2()
+
+    IEnumerator Pattern2()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
+
+        Debug.Log("Pattern2");
+
+
+        isDelay = false;
+        StartCoroutine(Think());
     }
-    IEnumerator pattern3()
+
+    IEnumerator Pattern3()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
+
+        Debug.Log("Pattern3");
+
+
+        isDelay = false;
+        StartCoroutine(Think());
     }
 
 }
