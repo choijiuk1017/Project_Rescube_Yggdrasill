@@ -9,6 +9,11 @@ public class Yggdrasill : MonoBehaviour
 
     Animator anim;
 
+    public BoxCollider2D attack1Range;
+
+    public GameObject attack1;
+
+
     private bool isDelay;
 
 
@@ -31,6 +36,7 @@ public class Yggdrasill : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         rigid = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -77,6 +83,23 @@ public class Yggdrasill : MonoBehaviour
 
     }
 
+    Vector3 Attack1_RandomPosition()
+    {
+        Vector3 originPosition = attack1Range.transform.position;
+
+        float rangeX = attack1Range.bounds.size.x;
+        float rangeY = attack1Range.bounds.size.y;
+
+        rangeX = Random.Range((rangeX/2)*-1, rangeX / 2);
+        rangeY = Random.Range((rangeY/2)*-1, rangeY / 2);
+
+        Vector3 randomPosition = new Vector3(rangeX, rangeY, 0);
+
+        Vector3 spawnPosition = originPosition + randomPosition;
+
+        return spawnPosition;
+    }
+
     IEnumerator Think()
     {
         yield return new WaitForSeconds(3f);
@@ -120,7 +143,12 @@ public class Yggdrasill : MonoBehaviour
 
     IEnumerator Pattern1()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
+
+        for (int i = 0; i < 15; i++)
+        {
+            GameObject attack1Spawn = Instantiate(attack1, Attack1_RandomPosition(), Quaternion.identity);
+        }
 
         Debug.Log("Pattern1");
 
@@ -130,7 +158,7 @@ public class Yggdrasill : MonoBehaviour
 
     IEnumerator Pattern2()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         Debug.Log("Pattern2");
 
@@ -141,7 +169,7 @@ public class Yggdrasill : MonoBehaviour
 
     IEnumerator Pattern3()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
 
         Debug.Log("Pattern3");
 
