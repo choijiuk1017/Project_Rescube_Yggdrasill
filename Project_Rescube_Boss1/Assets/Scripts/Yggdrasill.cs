@@ -93,7 +93,7 @@ public class Yggdrasill : MonoBehaviour
         rangeX = Random.Range((rangeX/2)*-1, rangeX / 2);
         rangeY = Random.Range((rangeY/2)*-1, rangeY / 2);
 
-        Vector3 randomPosition = new Vector3(rangeX, rangeY, 0);
+        Vector3 randomPosition = new (rangeX, rangeY, 0);
 
         Vector3 spawnPosition = originPosition + randomPosition;
 
@@ -147,7 +147,7 @@ public class Yggdrasill : MonoBehaviour
 
         for (int i = 0; i < 15; i++)
         {
-            GameObject attack1Spawn = Instantiate(attack1, Attack1_RandomPosition(), Quaternion.identity);
+            Instantiate(attack1, Attack1_RandomPosition(), Quaternion.identity);
         }
 
         Debug.Log("Pattern1");
