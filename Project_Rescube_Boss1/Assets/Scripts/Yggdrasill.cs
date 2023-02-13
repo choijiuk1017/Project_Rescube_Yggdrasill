@@ -112,6 +112,8 @@ public class Yggdrasill : MonoBehaviour
                 if(isDelay == false)
                 {
                     isDelay = true;
+
+                    
                     StartCoroutine(Pattern1());
                 }
                 break;
@@ -143,8 +145,10 @@ public class Yggdrasill : MonoBehaviour
 
     IEnumerator Pattern1()
     {
+        anim.SetTrigger("Attack1");
         yield return new WaitForSeconds(3f);
 
+        anim.ResetTrigger("Attack1");
         for (int i = 0; i < 15; i++)
         {
             Instantiate(attack1, Attack1_RandomPosition(), Quaternion.identity);
