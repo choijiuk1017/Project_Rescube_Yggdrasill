@@ -162,7 +162,9 @@ public class Yggdrasill : MonoBehaviour
 
     IEnumerator Pattern2()
     {
+        anim.SetTrigger("Attack2");
         yield return new WaitForSeconds(2f);
+        anim.ResetTrigger("Attack2");
 
         Debug.Log("Pattern2");
 
@@ -173,7 +175,9 @@ public class Yggdrasill : MonoBehaviour
 
     IEnumerator Pattern3()
     {
+        anim.SetTrigger("Attack3");
         yield return new WaitForSeconds(3f);
+        anim.ResetTrigger("Attack3");
 
         Debug.Log("Pattern3");
 
