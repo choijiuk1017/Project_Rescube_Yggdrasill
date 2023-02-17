@@ -12,6 +12,8 @@ public class Yggdrasill : MonoBehaviour
     public BoxCollider2D attack1Range;
 
     public GameObject attack1;
+    public GameObject attack2;
+    public GameObject attack3;
 
 
     private bool isDelay;
@@ -166,7 +168,11 @@ public class Yggdrasill : MonoBehaviour
         yield return new WaitForSeconds(2f);
         anim.ResetTrigger("Attack2");
 
+        
+
         Debug.Log("Pattern2");
+
+
 
 
         isDelay = false;
@@ -178,6 +184,25 @@ public class Yggdrasill : MonoBehaviour
         anim.SetTrigger("Attack3");
         yield return new WaitForSeconds(3f);
         anim.ResetTrigger("Attack3");
+
+        int count = 50;
+
+
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
+
+            Rigidbody2D rigid = clone.GetComponent<Rigidbody2D>();
+
+            Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / count), Mathf.Cos(Mathf.PI * 2 * i / count));
+            rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
+
+            Vector3 rotVec = Vector3.forward * 360 * i / count + Vector3.forward * 90;
+
+            clone.transform.Rotate(rotVec);
+        }
+
 
         Debug.Log("Pattern3");
 

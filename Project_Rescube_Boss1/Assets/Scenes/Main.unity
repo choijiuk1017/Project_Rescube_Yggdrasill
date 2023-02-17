@@ -150,7 +150,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -554,3 +554,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack1Range: {fileID: 45891489}
   attack1: {fileID: 190989136656256395, guid: 261f6a0efe918a2479d047d13399706b, type: 3}
+  attack2: {fileID: 9151069051603602958, guid: 77d4a056f9e19e14f9d14daac5c92b80, type: 3}
+  attack3: {fileID: 0}
