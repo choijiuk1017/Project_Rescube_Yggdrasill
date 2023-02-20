@@ -8,7 +8,7 @@ public class Attack2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 7f);
     }
 
     // Update is called once per frame
