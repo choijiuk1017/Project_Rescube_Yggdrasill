@@ -185,26 +185,29 @@ public class Yggdrasill : MonoBehaviour
         yield return new WaitForSeconds(3f);
         anim.ResetTrigger("Attack3");
 
-        int count = 50;
+        int count = 30;
 
+        float intervalAngle = 360 / count;
+
+        float weightAngle = 0;
 
 
         for (int i = 0; i < count; i++)
         {
             GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
 
-            Rigidbody2D rigid = clone.GetComponent<Rigidbody2D>();
+            float angle = weightAngle + intervalAngle * i;
 
-            Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / count), Mathf.Cos(Mathf.PI * 2 * i / count));
-            rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
+            float x = Mathf.Cos(angle * Mathf.PI / 180.0f);
+            float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
 
-            Vector3 rotVec = Vector3.forward * 360 * i / count + Vector3.forward * 90;
-
-            clone.transform.Rotate(rotVec);
+            clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
         }
 
+        //weightAngle += 1;
 
-        Debug.Log("Pattern3");
+
+        //Debug.Log("Pattern3");
 
 
         isDelay = false;
