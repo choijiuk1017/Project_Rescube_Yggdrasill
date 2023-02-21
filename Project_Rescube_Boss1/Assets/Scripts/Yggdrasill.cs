@@ -182,7 +182,9 @@ public class Yggdrasill : MonoBehaviour
     IEnumerator Pattern3()
     {
         anim.SetTrigger("Attack3");
-        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(1f);
+
         anim.ResetTrigger("Attack3");
 
         int count = 30;
@@ -191,18 +193,39 @@ public class Yggdrasill : MonoBehaviour
 
         float weightAngle = 0;
 
+        int randomNum = Random.Range(0, 2);
 
-        for (int i = 0; i < count; i++)
+        if (randomNum == 0)
         {
-            GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
+            for (int i = 0; i < count; i++)
+            {
+                GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
 
-            float angle = weightAngle + intervalAngle * i;
+                float angle = weightAngle + intervalAngle * i;
 
-            float x = Mathf.Cos(angle * Mathf.PI / 180.0f);
-            float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
+                float x = Mathf.Cos(angle * Mathf.PI / 180.0f);
+                float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
 
-            clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
+                clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
+            }
         }
+        else
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
+
+                Vector3 direction = (player.transform.position - clone.transform.position).normalized;
+
+                clone.GetComponent<Movement2D>().MoveTo(direction);
+            }
+            
+        }
+
+        
+
+
+
 
         //weightAngle += 1;
 
