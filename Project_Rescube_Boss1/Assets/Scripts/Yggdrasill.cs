@@ -85,7 +85,7 @@ public class Yggdrasill : MonoBehaviour
 
     }
 
-    Vector3 Attack1_RandomPosition()
+    Vector3 Attack_RandomPosition()
     {
         Vector3 originPosition = attack1Range.transform.position;
 
@@ -148,12 +148,12 @@ public class Yggdrasill : MonoBehaviour
     IEnumerator Pattern1()
     {
         anim.SetTrigger("Attack1");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.5f);
 
         anim.ResetTrigger("Attack1");
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 30; i++)
         {
-            Instantiate(attack1, Attack1_RandomPosition(), Quaternion.identity);
+            Instantiate(attack1, Attack_RandomPosition(), Quaternion.identity);
         }
 
         Debug.Log("Pattern1");
@@ -165,11 +165,14 @@ public class Yggdrasill : MonoBehaviour
     IEnumerator Pattern2()
     {
         anim.SetTrigger("Attack2");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
         anim.ResetTrigger("Attack2");
 
-        
-
+        for(int i = 0; i < 15; i++)
+        {
+            GameObject clone = Instantiate(attack3, Attack_RandomPosition(), Quaternion.identity);
+        }
+       
         Debug.Log("Pattern2");
 
 
