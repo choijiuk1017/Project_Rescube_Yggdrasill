@@ -118,8 +118,10 @@ public class Yggdrasill : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
+        //랜덤 숫자 생성
         int ranAction = Random.Range(0, 5);
 
+        //생성된 난수에 따라 패턴 결정
         switch (ranAction)
         {
             case 0:
@@ -208,7 +210,7 @@ public class Yggdrasill : MonoBehaviour
 
         float weightAngle = 0;
 
-        int randomNum = Random.Range(0, 2);
+        int randomNum = Random.Range(0, 3);
 
         if (randomNum == 0)
         {
@@ -224,7 +226,7 @@ public class Yggdrasill : MonoBehaviour
                 clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
             }
         }
-        else
+        else if (randomNum == 1)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -234,21 +236,32 @@ public class Yggdrasill : MonoBehaviour
 
                 clone.GetComponent<Movement2D>().MoveTo(direction);
             }
-            
+
+        }
+        else
+        {
+            for (int i = 0; i < count; i++)
+            {
+                GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
+
+                float angle = weightAngle + intervalAngle * i;
+
+                float x = Mathf.Cos(angle * Mathf.PI / 90.0f);
+                float y = Mathf.Sin(angle * Mathf.PI / 90.0f);
+
+                clone.GetComponent<Movement2D>().MoveTo(new Vector2(x,y));
+            }
         }
 
+
+            //weightAngle += 1;
+
+
+            //Debug.Log("Pattern3");
+
+
+            isDelay = false;
         
-
-
-
-
-        //weightAngle += 1;
-
-
-        //Debug.Log("Pattern3");
-
-
-        isDelay = false;
         StartCoroutine(Think());
     }
 
