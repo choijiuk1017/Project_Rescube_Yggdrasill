@@ -18,7 +18,7 @@ public class Yggdrasill : MonoBehaviour
 
     private bool isDelay;
 
-
+    //보스의 상태를 나타내주는 구조체
     enum State
     {
         Idle,
@@ -44,6 +44,7 @@ public class Yggdrasill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //각 상태에 알맞은 함수 호출
         if(state == State.Idle)
         {
             UpdateIdle();
@@ -58,8 +59,10 @@ public class Yggdrasill : MonoBehaviour
         }
     }
 
+    //보스 기본 상태 관련 함수
     private void UpdateIdle()
     {
+        //플레이어가 감지될 때에만 공격 모션을 취하도록 함
         if(player != null)
         {
             state = State.Attack;
@@ -70,6 +73,7 @@ public class Yggdrasill : MonoBehaviour
         }
     }
 
+    //보스 공격 상태 관련 함수
     private void UpdateAttack()
     {
         StartCoroutine(Think());
@@ -80,23 +84,31 @@ public class Yggdrasill : MonoBehaviour
         }
     }
 
+    //보스 사망 상태 관련 함수
     private void UpdateDeath()
     {
 
     }
 
+
+    //랜덤 위치를 생성해 주는 함수
     Vector3 Attack_RandomPosition()
     {
+        //콜라이더로 설정해둔 공격 범위의 기본 위치를 받아옴
         Vector3 originPosition = attack1Range.transform.position;
 
+        //콜라이더의 사이즈를 저장
         float rangeX = attack1Range.bounds.size.x;
         float rangeY = attack1Range.bounds.size.y;
 
+        //사이즈 내의 x,y 좌표를 랜덤 생성
         rangeX = Random.Range((rangeX/2)*-1, rangeX / 2);
         rangeY = Random.Range((rangeY/2)*-1, rangeY / 2);
 
+        //랜덤 좌표 받아옴
         Vector3 randomPosition = new (rangeX, rangeY, 0);
 
+        //랜덤 좌표를 기본 위치의 좌표에 더함
         Vector3 spawnPosition = originPosition + randomPosition;
 
         return spawnPosition;
