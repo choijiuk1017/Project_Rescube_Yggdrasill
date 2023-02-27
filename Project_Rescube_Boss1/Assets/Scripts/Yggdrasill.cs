@@ -214,6 +214,7 @@ public class Yggdrasill : MonoBehaviour
 
         if (randomNum == 0)
         {
+            //¿ø ÇüÅÂ·Î ³ª¹µÀÙ ¹ß»ç
             for (int i = 0; i < count; i++)
             {
                 GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
@@ -244,12 +245,15 @@ public class Yggdrasill : MonoBehaviour
             {
                 GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
 
-                float angle = weightAngle + intervalAngle * i;
+                Vector2 dirVec = player.transform.position - transform.position;
 
-                float x = Mathf.Cos(angle * Mathf.PI / 90.0f);
-                float y = Mathf.Sin(angle * Mathf.PI / 90.0f);
+                Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 2f));
 
-                clone.GetComponent<Movement2D>().MoveTo(new Vector2(x,y));
+                dirVec += ranVec;
+
+
+
+                clone.GetComponent<Movement2D>().MoveTo(dirVec * 0.5f);
             }
         }
 
