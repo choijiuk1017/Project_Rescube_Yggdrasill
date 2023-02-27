@@ -162,10 +162,10 @@ public class Yggdrasill : MonoBehaviour
     IEnumerator Pattern1()
     {
         anim.SetTrigger("Attack1");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         anim.ResetTrigger("Attack1");
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 15; i++)
         {
             Instantiate(attack1, Attack_RandomPosition(), Quaternion.identity);
         }
@@ -179,10 +179,10 @@ public class Yggdrasill : MonoBehaviour
     IEnumerator Pattern2()
     {
         anim.SetTrigger("Attack2");
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
         anim.ResetTrigger("Attack2");
 
-        for(int i = 0; i < 15; i++)
+        for(int i = 0; i < 5; i++)
         {
             GameObject clone = Instantiate(attack3, Attack_RandomPosition(), Quaternion.identity);
         }
