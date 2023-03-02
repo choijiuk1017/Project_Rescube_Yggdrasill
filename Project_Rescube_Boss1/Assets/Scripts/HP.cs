@@ -24,6 +24,11 @@ public class HP : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        curHp = curHp - damage;
+        curHp -= damage;
+    }
+
+    public void GetHP(int hp)
+    {
+        curHp += hp;
     }
 }

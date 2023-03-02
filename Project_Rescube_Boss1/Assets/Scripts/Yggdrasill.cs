@@ -15,6 +15,7 @@ public class Yggdrasill : MonoBehaviour
     public GameObject attack2;
     public GameObject attack3;
 
+    HP hp;
 
     private bool isDelay;
 
@@ -38,6 +39,8 @@ public class Yggdrasill : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         rigid = GetComponent<Rigidbody2D>();
+
+        hp = GetComponent<HP>();
 
     }
 
@@ -87,7 +90,7 @@ public class Yggdrasill : MonoBehaviour
     //보스 사망 상태 관련 함수
     private void UpdateDeath()
     {
-
+        
     }
 
 
