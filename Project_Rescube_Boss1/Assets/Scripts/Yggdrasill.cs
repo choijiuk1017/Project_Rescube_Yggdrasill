@@ -93,6 +93,7 @@ public class Yggdrasill : MonoBehaviour
         
     }
 
+    
 
     //랜덤 위치를 생성해 주는 함수
     Vector3 Attack_RandomPosition()
@@ -270,6 +271,14 @@ public class Yggdrasill : MonoBehaviour
             isDelay = false;
         
         StartCoroutine(Think());
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("bullet"))
+        {
+            hp.TakeDamage(10);
+        }
     }
 
 }
