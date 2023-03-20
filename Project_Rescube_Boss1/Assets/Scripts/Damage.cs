@@ -9,7 +9,7 @@ public class Damage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,7 +21,13 @@ public class Damage : MonoBehaviour
     public void TakeDamage()
     {
         damage.SetActive(true);
-
     }
+
+    public void FalseTakeDamage()
+    {
+        damage.SetActive(false);
+    }
+
+
 
 }
