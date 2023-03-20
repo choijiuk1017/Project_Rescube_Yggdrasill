@@ -267,7 +267,7 @@ public class Yggdrasill : MonoBehaviour
 
             //Debug.Log("Pattern3");
 
-
+         
             isDelay = false;
         
         StartCoroutine(Think());
