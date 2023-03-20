@@ -233,14 +233,26 @@ public class Yggdrasill : MonoBehaviour
         }
         else if (randomNum == 1)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
+            //for (int i = 0; i < count; i++)
+            //{
+            //    GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
 
-                Vector3 direction = (player.transform.position - clone.transform.position).normalized;
+            //    float angle = weightAngle + intervalAngle * i;
 
-                clone.GetComponent<Movement2D>().MoveTo(direction);
-            }
+            //    float x = Mathf.Asin(angle * Mathf.PI / 180.0f);
+            //    float y = Mathf.Acos(angle * Mathf.PI / 180.0f);
+
+            //    clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
+            //}
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
+
+            //    Vector3 direction = (player.transform.position - clone.transform.position).normalized;
+
+            //    clone.GetComponent<Movement2D>().MoveTo(direction);
+            //}
 
         }
         else
