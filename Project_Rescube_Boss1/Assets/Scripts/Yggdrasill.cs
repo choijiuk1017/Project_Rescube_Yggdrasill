@@ -19,6 +19,10 @@ public class Yggdrasill : MonoBehaviour
 
     private bool isDelay;
 
+    public float rot_Speed;
+
+    public Transform rotationPos;
+
     //보스의 상태를 나타내주는 구조체
     enum State
     {
@@ -216,6 +220,8 @@ public class Yggdrasill : MonoBehaviour
 
         int randomNum = Random.Range(0, 3);
 
+        float speed = 5.0f;
+
         if (randomNum == 0)
         {
             //원 형태로 나뭇잎 발사
@@ -233,6 +239,26 @@ public class Yggdrasill : MonoBehaviour
         }
         else if (randomNum == 1)
         {
+            for (int i = 0; i < count; i++)
+            {
+                rotationPos.transform.Rotate(Vector3.forward * rot_Speed * 100 * Time.deltaTime);
+
+                GameObject clone = Instantiate(attack2);
+
+                //총알 생성 위치를 머즐 입구로 한다.
+                clone.transform.position = rotationPos.transform.position;
+                //총알의 방향을 오브젝트의 방향으로 한다.
+                //->해당 오브젝트가 오브젝트가 360도 회전하고 있으므로, Rotation이 방향이 됨.
+                clone.transform.rotation = rotationPos.transform.rotation;
+
+                Vector3 direction = clone.transform.position.normalized;
+
+                clone.GetComponent<Movement2D>().MoveTo(direction);
+            }
+
+
+
+
             //for (int i = 0; i < count; i++)
             //{
             //    GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);
