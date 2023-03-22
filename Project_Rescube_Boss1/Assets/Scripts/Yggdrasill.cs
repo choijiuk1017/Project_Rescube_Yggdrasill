@@ -17,6 +17,8 @@ public class Yggdrasill : MonoBehaviour
 
     HP hp;
 
+    SpinShot spin;
+
     private bool isDelay;
 
     public float rot_Speed;
@@ -46,6 +48,8 @@ public class Yggdrasill : MonoBehaviour
 
         hp = GetComponent<HP>();
 
+        spin = GetComponentInChildren<SpinShot>();
+
     }
 
     // Update is called once per frame
@@ -65,7 +69,7 @@ public class Yggdrasill : MonoBehaviour
             UpdateDeath();
         }
 
-        rotationPos.transform.Rotate(Vector3.forward * rot_Speed * 100 * Time.deltaTime);
+       
     }
 
     //보스 기본 상태 관련 함수
@@ -239,15 +243,8 @@ public class Yggdrasill : MonoBehaviour
         }
         else if (randomNum == 1)
         {
-            for (int i = 0; i < count; i++)
-            {
-                GameObject clone = Instantiate(attack2, rotationPos.transform.position, rotationPos.transform.rotation);
-
-                clone.GetComponent<Movement2D>().MoveTo(Vector2.right);
-                //Vector3 direction = clone.transform.position.normalized;
-            }
-
-
+            spin.Spin();
+            
             //for (int i = 0; i < count; i++)
             //{
             //    GameObject clone = Instantiate(attack2, transform.position, Quaternion.identity);

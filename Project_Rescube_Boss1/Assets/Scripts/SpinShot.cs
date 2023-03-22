@@ -20,7 +20,7 @@ public class SpinShot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         transform.Rotate(Vector3.forward * rot_Speed * 100 * Time.deltaTime);
 
@@ -28,7 +28,6 @@ public class SpinShot : MonoBehaviour
 
         temp.transform.Translate(Vector2.right * speed * Time.deltaTime, Space.Self);
         //2초후 자동 삭제
-        Destroy(temp, 2f);
 
         //총알 생성 위치를 머즐 입구로 한다.
         temp.transform.position = transform.position;
@@ -37,6 +36,10 @@ public class SpinShot : MonoBehaviour
         //->해당 오브젝트가 오브젝트가 360도 회전하고 있으므로, Rotation이 방향이 됨.
         temp.transform.rotation = transform.rotation;
 
-        
+    }
+
+    public void Spin()
+    {
+
     }
 }
