@@ -243,7 +243,9 @@ public class Yggdrasill : MonoBehaviour
         }
         else if (randomNum == 1)
         {
-            spin.Spin();
+            spin.enabled = true;
+
+            Invoke("FalseSpin", 3f);
             
             //for (int i = 0; i < count; i++)
             //{
@@ -295,6 +297,11 @@ public class Yggdrasill : MonoBehaviour
             isDelay = false;
         
         StartCoroutine(Think());
+    }
+
+    private void FalseSpin()
+    {
+        spin.enabled =false;
     }
 
     private void OnTriggerEnter(Collider other)
